@@ -6,6 +6,11 @@ local config = {
 	debug = false,
 	terminal_width = 80, -- Width of the terminal split
 	terminal_position = "right", -- 'left' or 'right'
+	keybindings = {
+		start_repl = "<localleader>snr",
+		load_method = "<localleader>em",
+		load_method_to_var = "<localleader>etv",
+	},
 }
 
 -- State to track the REPL terminal
@@ -20,17 +25,17 @@ function M.setup(opts)
 	config = vim.tbl_deep_extend("force", config, opts or {})
 
 	-- Set up keybindings
-	vim.keymap.set("n", "<localleader>snr", function()
+	vim.keymap.set("n", config.keybindings.start_repl, function()
 		M.start_repl()
 	end, { desc = "Start NestJS REPL" })
 
-	vim.keymap.set("v", "<localleader>em", function()
+	vim.keymap.set("v", config.keybindings.load_method, function()
 		local start_line = vim.fn.line("v")
 		local end_line = vim.fn.line(".")
 		M.load_methods_to_repl(start_line, end_line)
 	end, { desc = "Load selected method to NestJS REPL" })
 
-	vim.keymap.set("n", "<localleader>em", function()
+	vim.keymap.set("n", config.keybindings.load_method, function()
 		local start_line, end_line = M.find_current_method()
 		if start_line and end_line then
 			M.load_methods_to_repl(start_line, end_line)
@@ -39,13 +44,13 @@ function M.setup(opts)
 		end
 	end, { desc = "Load current method to NestJS REPL" })
 
-	vim.keymap.set("v", "<localleader>etv", function()
+	vim.keymap.set("v", config.keybindings.load_method_to_var, function()
 		local start_line = vim.fn.line("v")
 		local end_line = vim.fn.line(".")
 		M.load_method_to_variable(start_line, end_line)
 	end, { desc = "Load selected method to variable in NestJS REPL" })
 
-	vim.keymap.set("n", "<localleader>etv", function()
+	vim.keymap.set("n", config.keybindings.load_method_to_var, function()
 		local start_line, end_line = M.find_current_method()
 		if start_line and end_line then
 			M.load_method_to_variable(start_line, end_line)

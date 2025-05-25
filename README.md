@@ -45,19 +45,38 @@ Using [lazy.nvim](https://github.com/folke/lazy.nvim):
 
 ```lua
 require('nest-repl').setup({
-  repl_command = 'npx nest repl', -- Command to start NestJS REPL
+  repl_command = 'npm run start -- --watch --entryFile repl', -- Command to start NestJS REPL
   terminal_width = 80,            -- Width of the terminal split
   terminal_position = 'right',    -- Position of the terminal ('left' or 'right')
+  keybindings = {                 -- Customize keybindings
+    start_repl = "<localleader>snr",    -- Start NestJS REPL
+    load_method = "<localleader>em",    -- Load method to REPL
+    load_method_to_var = "<localleader>etv" -- Load method to variable
+  }
 })
 ```
 
 ## Keybindings
 
-The plugin provides the following keybindings:
+The plugin provides the following default keybindings:
 
-- `<localleader>nrs` - Start NestJS REPL
+- `<localleader>snr` - Start NestJS REPL
 - `<localleader>em` - Load selected method to REPL (in normal or visual mode)
 - `<localleader>etv` - Load selected method to variable (in normal or visual mode)
+
+You can customize these keybindings in the setup configuration. For example:
+
+```lua
+require('nest-repl').setup({
+  keybindings = {
+    start_repl = "<leader>nr",        -- Change to <leader>nr
+    load_method = "<leader>lm",       -- Change to <leader>lm
+    load_method_to_var = "<leader>lv" -- Change to <leader>lv
+  }
+})
+```
+
+If no keybindings are provided in the setup options, the plugin will use the default keybindings.
 
 ## Usage
 
