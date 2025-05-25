@@ -73,7 +73,7 @@ The plugin provides the following keybindings:
 
    - Open a TypeScript/JavaScript file containing a class
    - Select a method in visual mode (press `v` and select the method)
-   - Run the command `:NestReplLoad` or use `<localleader>nrl`
+   - Run the command `:NestReplLoad` or use `<localleader>em`
 
    b. Using cursor position:
 
@@ -88,13 +88,13 @@ The plugin provides the following keybindings:
    a. Using visual selection:
 
    - Select a method in visual mode
-   - Press `<localleader>nrv`
+   - Press `<localleader>etv`
    - The method will be loaded into a variable named after the method
 
    b. Using cursor position:
 
    - Place your cursor anywhere inside a method
-   - Press `<localleader>nrv` in normal mode
+   - Press `<localleader>etv` in normal mode
    - The method will be loaded into a variable named after the method
 
    Example: If you have a method named `getUser`, it will be loaded as:
