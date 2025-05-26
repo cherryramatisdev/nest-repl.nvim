@@ -14,12 +14,17 @@ A Neovim plugin to load methods from TypeScript/JavaScript classes into the Nest
 
 ## Installation
 
+
+Setup your project, as explained on the [NestJS Docs](https://docs.nestjs.com/recipes/repl), to integrate with repl.
+
+
+Add the plugin using your package manager of choice.
+
 Using [packer.nvim](https://github.com/wbthomason/packer.nvim):
 
 ```lua
 use 'nandoolle/nest-repl.nvim'
 ```
-
 Using [lazy.nvim](https://github.com/folke/lazy.nvim):
 
 ```lua
@@ -56,7 +61,7 @@ require('nest-repl').setup({
 })
 ```
 
-## Keybindings
+## Default Keybindings
 
 The plugin provides the following default keybindings:
 
